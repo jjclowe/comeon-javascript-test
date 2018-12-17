@@ -62,3 +62,13 @@ npm install
 ```javascript
 npm start
 ```
+
+#### Test user accounts
+
+Use the following details to test user account functionality:
+
+```
+rebecka:secret
+eric:dad
+stoffe:rock
+```
