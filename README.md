@@ -43,7 +43,7 @@ stoffe:rock
 - Created proxy rules redirecting `:3000/api/*` to `:3001/*`
 - Improved mock `user` JSON by adding color theme to users
 
-## Assignment Overview
+## ComeOn's Assignment Overview
 
 The assignment is to use Javascript to tie together existing HTML and data to create a minimal, working casino website.
 
@@ -52,7 +52,7 @@ Basic HTML, CSS, images and JSON data is provided, however, feel free to impress
 Your mission is to provide the Javascript code that makes the parts work as described, below.
 **Feel free to use any other openly available library for validation, templating, dependency injection, etc.**
 
-## Assignment Criteria
+## ComeOn's Assignment Criteria
 
 We want to see how you approach and solve a problem, as well as look at code style and quality.
 Do take your time to do it right, rather than fast.
