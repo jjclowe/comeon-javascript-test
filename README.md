@@ -2,6 +2,30 @@
 
 My submission of ComeOn's test for Javascript coders.
 
+## Setup
+
+### Install dependencies
+
+```javascript
+npm install
+```
+
+### Start dev environment
+
+```javascript
+npm start
+```
+
+### Test user accounts
+
+Use the following details to test user account functionality:
+
+```
+rebecka:secret
+eric:dad
+stoffe:rock
+```
+
 ## Assignment Overview
 
 The assignment is to use Javascript to tie together existing HTML and data to create a minimal, working casino website.
@@ -48,27 +72,3 @@ These parts needs all to be completed for the assignment to be complete:
 - Requires user to be logged in
 - Load the selected game via the provided API
 - Provide a way to go back to the Games list screen
-
-### Setup
-
-#### Install dependencies
-
-```javascript
-npm install
-```
-
-#### Start dev environment
-
-```javascript
-npm start
-```
-
-#### Test user accounts
-
-Use the following details to test user account functionality:
-
-```
-rebecka:secret
-eric:dad
-stoffe:rock
-```
