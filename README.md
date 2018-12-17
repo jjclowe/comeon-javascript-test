@@ -32,6 +32,17 @@ eric:dad
 stoffe:rock
 ```
 
+## Notable Modifications
+
+- Switched to `npm` environment
+- Added `eslint` and `prettier` with airbnb rules
+- Refactored entire project to React
+- Utilising `concurrently` to run mock API and `webpack` dev server at same time
+- Utilising `babel-eslint` and used as ESLint's parser to solve 'unexpected-token' issue
+- Utilising `semantic` for UI
+- Created proxy rules redirecting `:3000/api/*` to `:3001/*`
+- Improved mock `user` JSON by adding color theme to users
+
 ## Assignment Overview
 
 The assignment is to use Javascript to tie together existing HTML and data to create a minimal, working casino website.
