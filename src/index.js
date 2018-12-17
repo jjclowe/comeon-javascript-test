@@ -7,6 +7,7 @@ import { Container, Image } from 'semantic-ui-react';
 import Login from './components/Login';
 import User from './components/User';
 import Casino from './components/Casino';
+import Footer from './components/Footer';
 
 export default class ComeOn extends React.Component {
   constructor(props) {
@@ -38,18 +39,21 @@ export default class ComeOn extends React.Component {
         } else {
           setTimeout(() => {
             // fake login delay
-            callbacks.failure();
+            callbacks.failure('Username or password incorrect.');
           }, 500);
         }
       })
-      .catch(res => {
-        console.log(res);
+      .catch(err => {
+        err.text().then(errorMessage => {
+          callbacks.failure(errorMessage);
+        });
       });
   };
 
-  deauthenticate = callback => {
+  deauthenticate = callbacks => {
     const { player } = this.state;
     const { username } = player;
+
     fetch('/api/logout', {
       method: 'post',
       headers: {
@@ -64,12 +68,19 @@ export default class ComeOn extends React.Component {
           this.state.isAuthenticated = false;
           setTimeout(() => {
             // fake logout delay
-            if (callback) callback();
+            if (callbacks.success) callbacks.success();
+          }, 500);
+        } else {
+          setTimeout(() => {
+            // fake logout delay
+            callbacks.failure('An error occurred trying to sign out.');
           }, 500);
         }
       })
-      .catch(res => {
-        console.log(res);
+      .catch(err => {
+        err.text().then(errorMessage => {
+          callbacks.failure(errorMessage);
+        });
       });
   };
 
@@ -132,6 +143,7 @@ export default class ComeOn extends React.Component {
             <Redirect from="/" to="/casino" />
           </Switch>
         </Container>
+        <Footer />
       </div>
     );
   }

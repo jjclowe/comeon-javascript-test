@@ -1,3 +1,7 @@
+html {
+  overflow-y: scroll;
+}
+
 body {
   background-color: #444;
 }
@@ -8,15 +12,29 @@ body {
   max-width: 990px;
 }
 
-.field {
-  margin: 10px;
-}
-
-.search {
-  float: right;
-}
-
 #game-launch {
   background-color: #000;
   text-align: center;
+}
+
+footer {
+  text-align: center;
+  margin: 20px 0;
+}
+footer > a {
+  display: inline-block;
+  color: #ccc;
+  opacity: 0.5;
+}
+footer > a:hover {
+  color: #aaa;
+  opacity: 1;
+}
+footer > a::before {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+  content: url('../images/github.png');
+  width: 24px;
+  height: 24px;
 }

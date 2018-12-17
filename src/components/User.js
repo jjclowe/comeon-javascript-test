@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { Button, Label, Image, Icon } from 'semantic-ui-react';
+import { Button, Label, Image, Message } from 'semantic-ui-react';
 
 class User extends React.Component {
   constructor(props) {
@@ -10,30 +10,44 @@ class User extends React.Component {
     const { avatar, event, name, color } = getPlayer();
 
     this.state = {
+      isBusy: false,
       avatar,
       event,
       name,
-      color
+      color,
+      errorMessage: ''
     };
   }
 
   logout = () => {
     const { deauthenticate, history, unAuthenticatedRedirect } = this.props;
 
-    deauthenticate(() => {
-      history.push(unAuthenticatedRedirect);
+    this.setState({ isBusy: true });
+
+    deauthenticate({
+      success: () => {
+        history.push(unAuthenticatedRedirect);
+      },
+      failure: error => {
+        this.setState({ isBusy: false, errorMessage: error });
+      }
     });
   };
 
   render() {
-    const { avatar, event, name, color } = this.state;
+    const { avatar, event, name, color, isBusy, errorMessage } = this.state;
 
     return (
       <div>
-        <Button basic onClick={this.logout} size="tiny" icon labelPosition="right">
-          Sign Out
-          <Icon name="sign out" />
-        </Button>
+        <Button
+          basic
+          onClick={this.logout}
+          icon="sign out"
+          labelPosition="right"
+          content="Sign Out"
+          loading={isBusy}
+        />
+        {errorMessage && <Message negative>{errorMessage}</Message>}
         <br />
         <br />
         <Label color={color} image>

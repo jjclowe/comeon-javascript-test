@@ -1,6 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-import { Button, Form, Input, Icon, Grid, Message, Header } from 'semantic-ui-react';
+import { Button, Form, Input, Grid, Message, Header } from 'semantic-ui-react';
 
 class Login extends React.Component {
   constructor(props) {
@@ -18,9 +18,9 @@ class Login extends React.Component {
     this.usernameInput.focus();
   }
 
-  handleChange = event => {
+  handleChange = (event, data) => {
     this.setState({
-      [event.target.id]: event.target.value
+      [data.id]: data.value
     });
     return true;
   };
@@ -44,8 +44,8 @@ class Login extends React.Component {
         success: () => {
           history.push(authenticatedRedirect);
         },
-        failure: () => {
-          this.setState({ isBusy: false, errorMessage: 'Username or password incorrect.' });
+        failure: error => {
+          this.setState({ isBusy: false, errorMessage: error });
         }
       }
     );
@@ -84,10 +84,13 @@ class Login extends React.Component {
                 />
               </Form.Field>
               {errorMessage && <Message negative>{errorMessage}</Message>}
-              <Button secondary type="submit" icon labelPosition="right">
-                Sign In
-                <Icon name="sign in" size="large" />
-              </Button>
+              <Button
+                secondary
+                type="submit"
+                icon="sign in"
+                labelPosition="right"
+                content="Sign In"
+              />
             </Form>
           </Grid.Column>
         </Grid.Row>

@@ -4,13 +4,12 @@ import {
   Input,
   Grid,
   Image,
-  Icon,
   Menu,
   Loader,
   Header,
   Button,
-  Segment,
-  Container
+  Container,
+  Message
 } from 'semantic-ui-react';
 
 export default class Casino extends React.Component {
@@ -115,18 +114,18 @@ export default class Casino extends React.Component {
                 secondary
                 id={game.code}
                 onClick={this.handleGameClick}
-                icon
+                icon="right arrow"
                 labelPosition="right"
                 floated="right"
-              >
-                Play
-                <Icon name="play" />
-              </Button>
+                content="Play"
+              />
             </Grid.Column>
           </Grid.Row>
         );
       }
     });
+
+    if (!games.length) return <Loader active />;
 
     if (GridItems.length)
       return (
@@ -135,36 +134,37 @@ export default class Casino extends React.Component {
         </div>
       );
 
-    return <Loader active />;
+    return <Message warning>No games match your search criteria.</Message>;
   };
 
-  Game = () => {
-    return (
-      <Container>
-        <br />
-        <Button secondary onClick={this.handleCasinoClick} icon labelPosition="left">
-          Back
-          <Icon name="arrow left" />
-        </Button>
-        <br />
-        <br />
-        <div id="game-launch" />
-      </Container>
-    );
-  };
+  Game = () => (
+    <Container>
+      <br />
+      <Button
+        secondary
+        onClick={this.handleCasinoClick}
+        icon="arrow left"
+        labelPosition="left"
+        content="Back"
+      />
+      <br />
+      <br />
+      <div id="game-launch" />
+    </Container>
+  );
 
-  handleFilterChange = event => {
-    const { value } = event.target;
+  handleFilterChange = (event, data) => {
+    const { value } = data;
     this.setState({ currentFilterString: value });
   };
 
-  handleCategoryClick = event => {
-    const { id } = event.target;
+  handleCategoryClick = (event, data) => {
+    const { id } = data;
     this.setState({ currentCategoryId: parseInt(id, 10), currentFilterString: '' }); // clear current filter
   };
 
-  handleGameClick = event => {
-    this.setState({ gameCode: event.target.id });
+  handleGameClick = (event, data) => {
+    this.setState({ gameCode: data.id });
   };
 
   handleCasinoClick = () => {
