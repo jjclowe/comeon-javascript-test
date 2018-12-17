@@ -16,6 +16,12 @@ npm install
 npm start
 ```
 
+Navigate to `//localhost:3000` to view website.
+
+API server will be running on `//localhost:3001`
+
+(Requests to `//localhost:3000/api/*` are proxied to API server)
+
 ### Test user accounts
 
 Use the following details to test user account functionality:
