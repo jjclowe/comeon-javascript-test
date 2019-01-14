@@ -1,6 +1,6 @@
 # comeon-javascript-test
 
-My submission of ComeOn's test for Javascript coders.
+My submission for ComeOn's 'test for Javascript coders'.
 
 ## Setup
 
